@@ -10,12 +10,12 @@ import java.util.Iterator;
  *
  * @author sala5
  */
-public class Bag <Item> implements Iterable<Item>{
+public class list <Item> implements Iterable<Item>{
     private Node first;
     private Node last;
     private int count;
     
-    public Bag(){
+    public list(){
         first = null;
         last = null;
         count = 0;
@@ -24,6 +24,7 @@ public class Bag <Item> implements Iterable<Item>{
     private class Node{
         Item item;
         Node next;
+        Node prev;
     }
     
     public void add(Item item){
