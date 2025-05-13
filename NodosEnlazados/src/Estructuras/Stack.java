@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Estructras;
+package Estructuras;
 
 import java.util.Iterator;
 
@@ -10,44 +10,38 @@ import java.util.Iterator;
  *
  * @author sala5
  */
-public class List <Item> implements Iterable<Item>{
+public class Stack <Item> implements Iterable<Item>{
     private Node first;
-    private Node last;
     private int count;
     
-    public List(){
+    public Stack(){
         first = null;
-        last = null;
         count = 0;
     }
     
     private class Node{
         Item item;
         Node next;
-        Node prev;
     }
     
-    public void add(Item item){
-        Node oldlast = last;
-        last = new Node();
-        last.item = item;
-        last.next = null;
-        last.prev = oldlast;
-        oldlast.next = last;
-        if(isEmpty())
-            last.prev = null; 
-            first = last;
+    public void push(Item item){
+        Node oldFirst = first;
+        first = new Node();
+        first.item = item;
+        first.next = oldFirst;
         count++;
     }
     
-    public Item remove(){
-        if(isEmpty()) return null;
+    public Item pop(){
         Item item = first.item;
         first.item = null;
         first = first.next;
         count--;
-        
         return item;
+    }
+    
+    public Item peak(){
+        return first.item;
     }
     
     public boolean isEmpty(){return first == null;}
