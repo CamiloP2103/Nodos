@@ -10,12 +10,12 @@ import java.util.Iterator;
  *
  * @author sala5
  */
-public class list <Item> implements Iterable<Item>{
+public class List <Item> implements Iterable<Item>{
     private Node first;
     private Node last;
     private int count;
     
-    public list(){
+    public List(){
         first = null;
         last = null;
         count = 0;
@@ -31,19 +31,22 @@ public class list <Item> implements Iterable<Item>{
         Node oldlast = last;
         last = new Node();
         last.item = item;
+        last.next = null;
+        last.prev = oldlast;
         oldlast.next = last;
         if(isEmpty())
+            last.prev = null; 
             first = last;
         count++;
     }
     
-    public Item dequeue(){
+    public Item remove(){
+        if(isEmpty()) return null;
         Item item = first.item;
         first.item = null;
         first = first.next;
         count--;
-        if(isEmpty())
-            last = null;
+        
         return item;
     }
     
