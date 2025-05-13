@@ -1,15 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package Estructuras;
+package Estructras;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 /**
- * Implementación de una lista doblemente enlazada genérica
- * @param <Item> Tipo de elementos que contendrá la lista
+ * La clase List implementa una lista doblemente enlazada genérica.
+ * Esta estructura de datos permite agregar elementos al final y eliminar
+ * elementos desde el principio, además de recorrerlos en ambas direcciones.
+ * 
+ * @author Rodrigo
+ * @author Juan
+ * @author Camilo
+ * @param <Item> El tipo de elemento que contendrá esta lista.
  */
 public class List<Item> implements Iterable<Item> {
     private Node first;
@@ -43,7 +45,6 @@ public class List<Item> implements Iterable<Item> {
         last = new Node();
         last.item = item;
         last.next = null;
-        
         if (isEmpty()) {
             first = last;
             last.prev = null;
@@ -63,7 +64,6 @@ public class List<Item> implements Iterable<Item> {
         first = new Node();
         first.item = item;
         first.prev = null;
-        
         if (isEmpty()) {
             last = first;
             first.next = null;
@@ -191,7 +191,6 @@ public class List<Item> implements Iterable<Item> {
         newNode.prev = current.prev;
         current.prev.next = newNode;
         current.prev = newNode;
-        
         count++;
     }
     
@@ -212,7 +211,6 @@ public class List<Item> implements Iterable<Item> {
             current = current.next;
             index++;
         }
-        
         return -1;
     }
     
